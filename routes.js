@@ -1,4 +1,15 @@
 const fs = require('fs');
+const EventEmitter = require('events');
+
+
+class Logger extends EventEmitter {
+    log(message)
+    {
+        console.log(message)
+
+        this.emit('sendMessage', {id: 1, url: 'http://'})
+    }
+}
 
 const requestHandler = (req, res) =>
 {
@@ -43,3 +54,6 @@ const requestHandler = (req, res) =>
 
 module.exports.handler = requestHandler;
 module.exports.someText = 'Trần Quốc Trung';
+module.exports.print = module;
+module.exports.Logger = Logger;
+
